@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: Activity_tracker-pipeline
+spec: 
+  workspaces:
+    - name: pipeline-pvc
+  tasks:
+    - name: task
+      taskRef:
+        name: Activity_tracker-task
+      params:        
+        - name: Activity_tracker
+          value: $(params.)
+        - name: revision
+          value: $(params.revision) 
+      workspaces:
+        - name: task-pvc
+          workspace: pipeline-pvc
