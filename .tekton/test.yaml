@@ -26,7 +26,7 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - set -e -o pipefail;
-          url="https://$GIT_TOKEN@github.com/siriguppa/tekton.git" ;
+          url="https://$GIT_TOKEN@https://github.com/MonikaReddy29/Tekton.git" ;
            cd /workspace && git clone -q  $url .;
            echo "Cloning $REPOSITORY";
 
