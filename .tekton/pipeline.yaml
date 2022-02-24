@@ -10,8 +10,8 @@ spec:
       taskRef:
         name: Activity_tracker-task
       params:        
-        - name: Activity_tracker
-          value: $(params.)
+        - name: repository
+          value: $(params.repository)
         - name: revision
           value: $(params.revision) 
       workspaces:
