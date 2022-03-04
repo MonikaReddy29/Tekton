@@ -3,10 +3,13 @@ kind: TriggerTemplate
 metadata:
   name: trigger-template
 spec:
-  params:   
-    - name: apikey
-      description: the apikey
-    
+  params:
+    - name: repository
+      description: the git repository
+    - name: revision
+      description: the git repo branch 
+    - name: gitToken
+      description: the Git Token
   resourcetemplates:
     # CD secret to provide API_KEY to access toolchain information
     - apiVersion: v1
@@ -15,7 +18,7 @@ spec:
         name: cd-secret
       type: Opaque
       stringData:
-        API_KEY: $(params.apikey)
+        GIT_TOKEN: $(params.gitToken)
     - apiVersion: v1
       kind: PersistentVolumeClaim
       metadata:
@@ -33,12 +36,26 @@ spec:
         name: pipelinerun-$(uid)
       spec:
         pipelineRef:
-          name: activity_tracker-pipeline
-        params:        
+          name: pipeline
         workspaces:
           - name: pipeline-pvc
             persistentVolumeClaim:
               claimName: pipelinerun-$(uid)-pvc
+        params:
+          - name: botToken
+            value: $(params.botToken)
+          - name: repository
+            value: $(params.repository)
+          - name: revision
+            value: $(params.revision)
+          - name: channelIDSource
+            value: $(params.channelIDSource)
+          - name: channelIDDestination
+            value: $(params.channelIDDestination)
+          - name: groupID
+            value: $(params.groupID)
+          - name: serviceName
+            value: $(params.serviceName)
 
 ---
 apiVersion: tekton.dev/v1beta1
