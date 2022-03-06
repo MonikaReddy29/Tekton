@@ -1,11 +1,19 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: branch-task
+  name: Activity_tracker-task
 spec:
   params:
     - name: repository
-      description: the git repository 
+      description: the git repository
+    - name: revision
+      description: the revision
+      default: master
+    - name: apikey
+      description: the ibmcloud api key
+    - name: api
+      description: the ibmcloud api endpoint
+      default: "https://cloud.ibm.com"      
     - name: continuous-delivery-context-secret
       description: name of the configmap containing the continuous delivery pipeline context secrets
       default: cd-secret
@@ -26,31 +34,26 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - set -e -o pipefail;
-          url="https://$GIT_TOKEN@https://github.com/MonikaReddy29/Tekton.git" ;
-           cd /workspace && git clone -q  $url .;
-           echo "Cloning $REPOSITORY";
+          url="https://github.com/MonikaReddy29/Tekton.git" ;
+          cd /workspace && git clone -q  $url .;
 
-    - name: python
+    - name: logscmd
       image: icr.io/continuous-delivery/pipeline/pipeline-base-image:latest
       env:
-        - name: REPOSITORY
-          value: $(params.repository)
-        - name: REVISION
-          value: $(params.revision)
-        - name: GIT_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: $(params.continuous-delivery-context-secret)
-              key: GIT_TOKEN
+        - name: IBMCLOUD_API_KEY
+          value: $(params.apikey)      
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          cd /workspace;
+          ibmcloud login -a $(params.api) -r --apikey $IBMCLOUD_API_KEY;
+          cd /workspace;      
           echo "staring install";
           apt-get -y update;
           apt-get -y install python3;
           apt-get -y install python3-pip;
-          pip3 install --no-cache-dir pygithub;
-          python3 branch.py;
+          pip3 install logging
+          ibmcloud logging service-instances --output wide --all-regions
+          ibmcloud logging service-instances --output wide --all-regions --sn logdnaat
+          ibmcloud resource service-instance
 
          
