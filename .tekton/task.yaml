@@ -24,6 +24,8 @@ spec:
     - name: clone-repo
       image: alpine/git
       env:
+        - name: repository
+          value: $(params.repository)
         - name: REVISION
           value: $(params.revision)
         - name: Apikey
@@ -38,7 +40,7 @@ spec:
           cd /workspace && git clone -q  $url .;
 
     - name: logscmd
-      image: ibmcom/pipeline-base-image
+      image: ibmcom/pipeline-base-image:latest
       env:
         - name: apikey
           value: $(params.apikey)      
