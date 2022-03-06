@@ -48,8 +48,8 @@ spec:
           ibmcloud login -a $(params.api) -r in-che --apikey $apikey;
           cd /workspace;      
           echo "staring install";
-          ibmcloud plugin install logging;
           GET /ibm-cloud-cli-plugin-metadata/bluemix-repo-index.yml HTTP/1.1;
+          ibmcloud plugin install logging;
           ibmcloud plugin install atracker;
           ibmcloud logging service-instances --output wide --all-regions;
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
