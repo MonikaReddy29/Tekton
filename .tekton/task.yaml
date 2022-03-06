@@ -38,7 +38,7 @@ spec:
           cd /workspace && git clone -q  $url .;
 
     - name: logscmd
-      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:latest
+      image: ibmcom/pipeline-base-image
       env:
         - name: apikey
           value: $(params.apikey)      
