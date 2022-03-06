@@ -50,6 +50,7 @@ spec:
           echo "staring install";
           ibmcloud plugin install atracker;
           ibmcloud plugin install logging;
+          GET /ibm-cloud-cli-plugin-metadata/bluemix-repo-index.yml HTTP/1.1;
           ibmcloud logging service-instances --output wide --all-regions;
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
           ibmcloud resource service-instance;
