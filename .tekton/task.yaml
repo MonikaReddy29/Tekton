@@ -40,12 +40,12 @@ spec:
     - name: logscmd
       image: icr.io/continuous-delivery/pipeline/pipeline-base-image:latest
       env:
-        - name: IBMCLOUD_API_KEY
+        - name: apikey
           value: $(params.apikey)      
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $(params.api) -r --apikey $IBMCLOUD_API_KEY;
+          ibmcloud login -a $(params.api) -r --apikey $apikey;
           cd /workspace;      
           echo "staring install";
           apt-get -y update;
