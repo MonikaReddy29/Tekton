@@ -28,11 +28,6 @@ spec:
           value: $(params.repository)
         - name: REVISION
           value: $(params.revision)
-        - name: Apikey
-          valueFrom:
-            secretKeyRef:
-              name: $(params.continuous-delivery-context-secret)
-              key: Apikey
       command: ["/bin/sh", "-c"]
       args:
         - set -e -o pipefail;
@@ -43,7 +38,10 @@ spec:
       image: ibmcom/pipeline-base-image:latest
       env:
         - name: apikey
-          value: $(params.apikey)      
+          valueFrom:
+            secretKeyRef:
+              name: $(params.continuous-delivery-context-secret)
+              key: apikey    
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
