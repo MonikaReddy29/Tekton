@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: activity_tracker-task
+  name: activitytracker-task
 spec:
   params:
     - name: repository
