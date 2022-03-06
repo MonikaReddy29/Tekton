@@ -50,10 +50,6 @@ spec:
           ibmcloud login -a $(params.api) -r --apikey $apikey;
           cd /workspace;      
           echo "staring install";
-          apt-get -y update;
-          apt-get -y install python3;
-          apt-get -y install python3-pip;
-          pip3 install logging
           ibmcloud logging service-instances --output wide --all-regions
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat
           ibmcloud resource service-instance
