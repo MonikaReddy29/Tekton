@@ -45,7 +45,7 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $(params.api) -r --apikey $apikey;
+          ibmcloud login -a $(params.api) -r in-che --apikey $apikey;
           cd /workspace;      
           echo "staring install";
           ibmcloud logging service-instances --output wide --all-regions;
