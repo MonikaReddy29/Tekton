@@ -49,7 +49,7 @@ spec:
           cd /workspace;      
           echo "staring install";
           sudo apt-get install;
-          GET /ibm-cloud-cli-plugin-metadata/bluemix-repo-index.yml HTTP/1.1;
+          GET /ibm-cloud-cli-plugin-logging/bluemix-repo-index.yml HTTP/1.1;
           ibmcloud plugin install logging;
           ibmcloud plugin install atracker;
           ibmcloud logging service-instances --output wide --all-regions;
