@@ -50,6 +50,6 @@ spec:
           ibmcloud login -a $(params.api) -r --apikey $apikey;
           cd /workspace;      
           echo "staring install";
-          ibmcloud logging service-instances --output wide --all-regions
-          ibmcloud logging service-instances --output wide --all-regions --sn logdnaat
-          ibmcloud resource service-instance
+          ibmcloud logging service-instances --output wide --all-regions;
+          ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
+          ibmcloud resource service-instance;
