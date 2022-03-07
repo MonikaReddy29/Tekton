@@ -52,4 +52,4 @@ spec:
           ibmcloud plugin install logging;
           ibmcloud logging service-instances --output wide --all-regions;
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
-          ibmcloud resource service-instance;
+
