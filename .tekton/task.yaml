@@ -48,6 +48,7 @@ spec:
           ibmcloud login -a $(params.api) -r in-che --apikey $apikey;
           cd /workspace;      
           echo "staring install";
+          curl -fsSL https://clis.cloud.ibm.com/install/linux | sh;
           ibmcloud plugin install logging;
           ibmcloud logging service-instances --output wide --all-regions;
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
