@@ -45,7 +45,7 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $(params.api) -r in-che --apikey $apikey;
+          ibmcloud login -a $(params.api) --apikey $apikey --no-region;
           cd /workspace;      
           echo "staring install";
           curl -fsSL https://clis.cloud.ibm.com/install/linux | sh;
