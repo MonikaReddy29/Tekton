@@ -53,5 +53,5 @@ spec:
           ibmcloud logging service-instances --output wide --all-regions;
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
           ibmcloud resource service-instances;
-          curl -fsSL https://clis.cf/install/linux | sh;
+          curl -fsSL https://clis.cloudfoundry.org/install/linux | sh;
           cf services;
