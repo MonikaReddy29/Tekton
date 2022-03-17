@@ -53,5 +53,7 @@ spec:
           ibmcloud logging service-instances --output wide --all-regions;
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
           ibmcloud resource service-instances;
+          apt-get -y install python3;
+          apt-get -y install python3-pip;
           pip3 install cf.cli;
           cf services;
