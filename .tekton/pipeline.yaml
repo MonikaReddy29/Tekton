@@ -10,6 +10,8 @@ spec:
        description: the git repo branch
      - name: apikey
        description: apikey 
+     - name: AT1
+       description: AT
   workspaces:
     - name: pipeline-pvc
   tasks:
@@ -22,7 +24,9 @@ spec:
         - name: revision
           value: $(params.revision) 
         - name: apikey
-          value: $(params.apikey)          
+          value: $(params.apikey)
+        - name: AT1
+          value: $(params.AT1)
       workspaces:
         - name: task-pvc
           workspace: pipeline-pvc
