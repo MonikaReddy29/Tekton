@@ -6,6 +6,8 @@ spec:
   params:
     - name: repository
       description: the git repository
+    - name: AT1
+      description: the activity tracker
     - name: revision
       description: the revision
       default: main
@@ -26,6 +28,8 @@ spec:
       env:
         - name: repository
           value: $(params.repository)
+        - name: AT1
+          value: $(params.AT1)
         - name: REVISION
           value: $(params.revision)
       command: ["/bin/sh", "-c"]
@@ -53,6 +57,6 @@ spec:
           ibmcloud logging service-instances --output wide --all-regions;
           ibmcloud logging service-instances --output wide --all-regions --sn logdnaat;
           ibmcloud resource service-instances;
-          ibmcloud resource service-instance $AT1
+          ibmcloud resource service-instance $AT1;
           ibmcloud plugin install cloud-object-storage;
           ibmcloud cos config list;
