@@ -12,6 +12,8 @@ spec:
        description: apikey 
      - name: AT1
        description: AT
+     - name: crn
+       description: cos crn
   workspaces:
     - name: pipeline-pvc
   tasks:
@@ -27,6 +29,8 @@ spec:
           value: $(params.apikey)
         - name: AT1
           value: $(params.AT1)
+        - name: crn
+          value: $(params.crn)
       workspaces:
         - name: task-pvc
           workspace: pipeline-pvc
