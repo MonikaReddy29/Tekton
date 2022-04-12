@@ -8,6 +8,8 @@ spec:
       description: the git repository
     - name: AT1
       description: the activity tracker
+    - name: crn
+      description: the cos crn
     - name: revision
       description: the revision
       default: main
@@ -30,6 +32,8 @@ spec:
           value: $(params.repository)
         - name: AT1
           value: $(params.AT1)
+        - name: crn
+          value: $(params.crn)
         - name: REVISION
           value: $(params.revision)
       command: ["/bin/sh", "-c"]
@@ -69,6 +73,6 @@ spec:
           echo "--------------------------------------------------------------------------------------------------";
           ibmcloud cos config list;
           echo "--------------------------------------------------------------------------------------------------";
-          ibmcloud cos buckets --ibm-service-instance-id 03263cd9-b065-4c85-8c28-66a94a6d9dde;
+          ibmcloud cos buckets --ibm-service-instance-id $(params.crn);
           
           
