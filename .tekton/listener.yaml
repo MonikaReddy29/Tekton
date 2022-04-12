@@ -12,6 +12,8 @@ spec:
       description: the api key
     - name: AT1
       description: the instance AT
+    - name: crn
+      description: the cos crn
   resourcetemplates:
     # CD secret to provide API_KEY to access toolchain information
     - apiVersion: v1
@@ -52,6 +54,8 @@ spec:
             value: $(params.apikey)
           - name: AT1
             value: $(params.AT1)
+          - name: crn
+            value: $(params.crn)
 
 
 ---
